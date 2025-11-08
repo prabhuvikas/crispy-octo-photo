@@ -6,6 +6,7 @@ A native iOS application that creates Polaroid-style photos with embedded locati
 
 ### Project Contents
 
+- **`FIRST-TIME-SETUP.md`**: Complete beginner's guide to Apple Developer Program and App Store setup
 - **`plan.md`**: Comprehensive development plan with 12 phases, detailed task breakdown, and implementation roadmap
 - **`Build.md`**: Step-by-step build instructions for macOS/Windows and TestFlight deployment guide
 - **`CI-CD-SETUP.md`**: Complete GitHub Actions CI/CD pipeline setup for automated builds and deployments
@@ -33,6 +34,24 @@ A native iOS application that creates Polaroid-style photos with embedded locati
 - **Frameworks**: AVFoundation, CoreLocation, Photos, CoreImage, CoreGraphics
 
 ### Getting Started
+
+#### New to iOS Development?
+
+If this is your first iOS app, start here: **[FIRST-TIME-SETUP.md](FIRST-TIME-SETUP.md)**
+
+Complete beginner's guide covering:
+- 📝 Apple Developer Program enrollment ($99/year)
+- 🔐 Certificates and provisioning profiles creation
+- 🔑 App Store Connect API key generation
+- 📱 Creating your first app in App Store Connect
+- ✈️ TestFlight beta testing setup
+- 📋 App Store submission preparation
+- ⚠️ Common mistakes to avoid
+- 📚 Useful resources and learning materials
+
+**Time required**: 2-3 hours one-time setup
+
+#### Already Have Apple Developer Account?
 
 See the [PhotoLocApp README](PhotoLocApp/README.md) for detailed setup instructions and documentation.
 
