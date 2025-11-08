@@ -7,6 +7,7 @@ A native iOS application that creates Polaroid-style photos with embedded locati
 ### Project Contents
 
 - **`plan.md`**: Comprehensive development plan with 12 phases, detailed task breakdown, and implementation roadmap
+- **`Build.md`**: Step-by-step build instructions for macOS/Windows and TestFlight deployment guide
 - **`PhotoLocApp/`**: Complete iOS app implementation (Swift + SwiftUI)
 
 ### Features
@@ -32,6 +33,15 @@ A native iOS application that creates Polaroid-style photos with embedded locati
 ### Getting Started
 
 See the [PhotoLocApp README](PhotoLocApp/README.md) for detailed setup instructions and documentation.
+
+### Build & Deploy
+
+For complete build instructions and TestFlight deployment, see [Build.md](Build.md):
+- **macOS**: Full Xcode setup and build process
+- **Windows**: VM and cloud Mac options
+- **TestFlight**: Beta testing deployment guide
+- **Testing**: Comprehensive testing checklist
+- **Troubleshooting**: Common issues and solutions
 
 ### Development Plan
 
