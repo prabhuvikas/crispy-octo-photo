@@ -8,7 +8,9 @@ A native iOS application that creates Polaroid-style photos with embedded locati
 
 - **`plan.md`**: Comprehensive development plan with 12 phases, detailed task breakdown, and implementation roadmap
 - **`Build.md`**: Step-by-step build instructions for macOS/Windows and TestFlight deployment guide
+- **`CI-CD-SETUP.md`**: Complete GitHub Actions CI/CD pipeline setup for automated builds and deployments
 - **`PhotoLocApp/`**: Complete iOS app implementation (Swift + SwiftUI)
+- **`.github/workflows/`**: Automated CI/CD workflows (build, TestFlight, App Store)
 
 ### Features
 
@@ -36,12 +38,26 @@ See the [PhotoLocApp README](PhotoLocApp/README.md) for detailed setup instructi
 
 ### Build & Deploy
 
+#### Manual Build
 For complete build instructions and TestFlight deployment, see [Build.md](Build.md):
 - **macOS**: Full Xcode setup and build process
 - **Windows**: VM and cloud Mac options
 - **TestFlight**: Beta testing deployment guide
 - **Testing**: Comprehensive testing checklist
 - **Troubleshooting**: Common issues and solutions
+
+#### Automated CI/CD (Recommended)
+For automated builds and deployments using GitHub Actions, see [CI-CD-SETUP.md](CI-CD-SETUP.md):
+- **Automatic builds**: On every PR and merge
+- **TestFlight deployment**: Automatic on merge to main
+- **App Store deployment**: Tag-based releases
+- **No Mac required**: Runs on GitHub's cloud infrastructure
+- **One-time setup**: Configure once, deploy forever
+
+**Quick Start:**
+1. Set up GitHub Secrets (certificates, API keys)
+2. Push to main → Automatic TestFlight deployment
+3. Create tag `v1.0.0` → Automatic App Store deployment
 
 ### Development Plan
 

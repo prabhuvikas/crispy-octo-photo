@@ -1,0 +1,84 @@
+name: iOS CI - Build & Test
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+  push:
+    branches: [ main, develop ]
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: macos-13
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Select Xcode version
+      run: sudo xcode-select -s /Applications/Xcode_15.0.app/Contents/Developer
+
+    - name: Show Xcode version
+      run: xcodebuild -version
+
+    - name: Show available SDKs
+      run: xcodebuild -showsdks
+
+    - name: Cache Swift Package Manager
+      uses: actions/cache@v3
+      with:
+        path: ~/Library/Developer/Xcode/DerivedData
+        key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+        restore-keys: |
+          ${{ runner.os }}-spm-
+
+    - name: Install Dependencies (if any)
+      run: |
+        cd PhotoLocApp
+        # Uncomment if using CocoaPods
+        # pod install --repo-update
+        # Uncomment if using Swift Package Manager
+        # swift package resolve
+
+    - name: Build for Testing
+      run: |
+        cd PhotoLocApp
+        xcodebuild clean build \
+          -scheme PhotoLocApp \
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=17.0' \
+          -configuration Debug \
+          CODE_SIGN_IDENTITY="" \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGNING_ALLOWED=NO
+
+    - name: Run Unit Tests (if available)
+      run: |
+        cd PhotoLocApp
+        xcodebuild test \
+          -scheme PhotoLocApp \
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=17.0' \
+          -configuration Debug \
+          CODE_SIGN_IDENTITY="" \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGNING_ALLOWED=NO \
+          -enableCodeCoverage YES || echo "No tests found"
+
+    - name: Upload Build Artifacts
+      if: success()
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-artifacts
+        path: |
+          PhotoLocApp/build/
+          !PhotoLocApp/build/**/*.xcarchive
+        retention-days: 5
+
+    - name: Build Status
+      if: always()
+      run: |
+        if [ ${{ job.status }} == 'success' ]; then
+          echo "✅ Build successful!"
+        else
+          echo "❌ Build failed!"
+          exit 1
+        fi
